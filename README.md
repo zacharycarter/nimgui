@@ -15,7 +15,7 @@ All of this is accomplished via these steps -
 ```bash
 $ git clone --recurse-submodules -j8 https://github.com/zacharycarter/nimgui.git
 
-$ git submodule update
+$ cd nimgui && git submodule update
 
 $ nimble gen
 ```
