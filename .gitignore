@@ -162,13 +162,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# NimGL_Gen
-*.xml
-refpages
-cimgui.cpp
-cimgui.h
-definitions.json
-imgui/imgui.nim
-*.json
-
 # End of https://www.gitignore.io/api/c,nim,osx,c++,linux,macos,windows,visualstudiocode
+
+# Bindings generator binary
+tools/imgui_gen
