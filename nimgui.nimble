@@ -1,8 +1,8 @@
 # Package
 
 version     = "0.1.0"
-author      = "Leonardo Mariscal"
-description = "A new awesome nimble package"
+author      = "Leonardo Mariscal & Zachary Carter"
+description = "bindings to cimgui - https://github.com/cimgui/cimgui"
 license     = "MIT"
 srcDir      = "src"
 installExt    = @["nim"]
