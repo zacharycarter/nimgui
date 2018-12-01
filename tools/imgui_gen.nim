@@ -379,6 +379,7 @@ proc main() =
   out_data.add(getDefinitions(json_defs))
   # out_data.add("\n# Implementations @TODO Make our own\n")
   # out_data.add(getDefinitions(json_impl_defs, true))
+  discard existsOrCreateDir("src")
   writeFile("src/nimgui.nim", out_data)
 
 main()
