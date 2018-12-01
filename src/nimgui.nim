@@ -1,4 +1,4 @@
-# Copyright 2018, NimGL contributors.
+# Copyright 2018, Leonardo Mariscal & Zachary Carter.
 
 ## ImGUI Bindings
 ## ===

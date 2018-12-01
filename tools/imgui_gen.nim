@@ -1,4 +1,4 @@
-# Copyright 2018, NimGL contributors.
+# Copyright 2018, Leonardo Mariscal & Zachary Carter.
 
 import os, strutils, streams, json
 import unicode
@@ -14,7 +14,7 @@ type
 
 const
   header = """
-# Copyright 2018, NimGL contributors.
+# Copyright 2018, Leonardo Mariscal & Zachary Carter.
 
 ## ImGUI Bindings
 ## ===
