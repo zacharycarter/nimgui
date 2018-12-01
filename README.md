@@ -2,7 +2,7 @@
 
 This started as a fork from [nimgl_gen](https://github.com/lmariscal/nimgl_gen)
 
-I only wanted bindings to cimgui, and I found the project's setup to be a bit cumbersome to work with in a nimble environment.
+I only wanted bindings to [cimgui](https://github.com/cimgui/cimgui), and I found the project's setup to be a bit cumbersome to work with in a nimble environment.
 
 I've renamed the project to try and better reflect its purpose, as well as changed its overall structure to better suit a nimble environment.
 
