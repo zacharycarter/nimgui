@@ -6,7 +6,7 @@ I only wanted bindings to cimgui, and I found the project's setup to be a bit cu
 
 I've renamed the project to try and better reflect its purpose, as well as changed its overall structure to better suit a nimble environment.
 
-The project now has a tools directory, where the code for generating the bindings lives. Once generated, the bindings - which will be named `nimgui.nim` - will be stored int the `src/` directory.
+The project now has a tools directory, where the code for generating the bindings lives. Once generated, the bindings - which will be named `nimgui.nim` - will be stored in a newly created directory named `src/`, in preparation for `nimble install`.
 
 The resulting `nimgui.nim` file can be installed as a nimble package.
 
