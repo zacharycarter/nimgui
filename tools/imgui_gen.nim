@@ -44,6 +44,7 @@ import strutils
 
 proc currentSourceDir(): string =
   result = currentSourcePath()
+  result = result.replace("\\", "/")
   result = result[0 ..< result.rfind("/")]
 
 when not defined(imguiSrc):
@@ -53,7 +54,6 @@ when not defined(imguiSrc):
     const imgui_dll* = "cimgui.dylib"
   else:
     const imgui_dll* = "cimgui.so"
-  {.passC: "-I" & currentSourceDir() & "/private/cimgui".}
   {.pragma: imgui_lib, dynlib: imgui_dll, cdecl.}
 else:
   {.compile: "../cimgui/imgui/imgui.cpp",
@@ -62,6 +62,8 @@ else:
     compile: "../cimgui/imgui/imgui_widgets.cpp",
     compile: "../cimgui/cimgui/cimgui.cpp".}
   {.pragma: imgui_lib, cdecl.}
+
+{.passC: "-I" & currentSourceDir() & "/../cimgui" & " -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS".}
 
 """
   dtypes_header = """
@@ -85,6 +87,10 @@ else:
     size* {.importc: "Size".}: int32
     capacity* {.importc: "Capacity".}: int32
     data* {.importc: "Data".}: carray[float32]
+  ImVector_int* {.importc: "ImVector_int", header: "<cimgui.h>".} = object
+    size* {.importc: "Size".}: int32
+    capacity* {.importc: "Capacity".}: int32
+    data* {.importc: "Data".}: carray[int32]
   ImVector_ImWchar* {.importc: "ImVector_ImWchar", header: "<cimgui.h>".} = object
     size* {.importc: "Size".}: int32
     capacity* {.importc: "Capacity".}: int32
@@ -170,7 +176,7 @@ proc translateTypes(dtype: string, name: string): tuple[dtype: string, name: str
   result.dtype = result.dtype.replace("const ", "")
   result.dtype = result.dtype.replace("const", "")
 
-  if result.dtype == "((void *)0)":
+  if result.dtype.replace(" ", "") == "((void*)0)":
     result.dtype = "nil"
 
   if result.dtype.find("/*") != -1:
