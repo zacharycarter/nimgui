@@ -1,4 +1,4 @@
-# Copyright 2018, Leonardo Mariscal & Zachary Carter.
+# Copyright 2019, Leonardo Mariscal & Zachary Carter.
 
 import os, strutils, streams, json
 import unicode
