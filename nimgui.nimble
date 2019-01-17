@@ -1,6 +1,6 @@
 # Package
 
-version     = "0.1.0"
+version     = "1.6.7"
 author      = "Leonardo Mariscal & Zachary Carter"
 description = "bindings to cimgui - https://github.com/cimgui/cimgui"
 license     = "MIT"
