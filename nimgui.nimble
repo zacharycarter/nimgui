@@ -1,6 +1,6 @@
 # Package
 
-version     = "1.6.7"
+version     = "1.6.8"
 author      = "Leonardo Mariscal & Zachary Carter"
 description = "bindings to cimgui - https://github.com/cimgui/cimgui"
 license     = "MIT"
@@ -14,4 +14,4 @@ requires "nim >= 0.19.0"
 
 task gen, "build the generator":
   exec "nim c -r -d:ssl tools/imgui_gen.nim"
-  exec "nimble install"
+  exec "nimble install -y"
