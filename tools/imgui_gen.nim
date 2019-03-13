@@ -170,10 +170,18 @@ else:
 # Structs
 
 proc translateTypes(dtype: string, name: string): tuple[dtype: string, name: string] =
+  var unsigned_value = false
+
   result.dtype = dtype
   result.name = name
   result.dtype = result.dtype.replace("const ", "")
   result.dtype = result.dtype.replace("const", "")
+
+  if result.dtype.contains("unsigned"):
+    unsigned_value = true
+
+  result.dtype = result.dtype.replace("unsigned ", "")
+  result.dtype = result.dtype.replace("signed ", "")
 
   if result.dtype == "T":
     result.dtype = "ImVector"
@@ -256,6 +264,9 @@ proc translateTypes(dtype: string, name: string): tuple[dtype: string, name: str
     return ("proc(data: ptr ImGuiInputTextCallbackData): int32 {.cdecl.}", name)
   elif result.dtype.startsWith("void()(ImDrawList parent_list,ImDrawCmd cmd)"):
     return ("proc(parent_list: ptr ImDrawList, cmd: ptr ImDrawCmd): void {.cdecl.}", name)
+
+  if unsigned_value and result.dtype != "char":
+    result.dtype = "u" & result.dtype
 
   for i in 0 ..< ptrcount:
     result.dtype = "ptr " & result.dtype
@@ -347,7 +358,6 @@ proc getDefinitions(node: JsonNode, impls: bool = false): string =
         vararg = true
         continue
       elif tipe.dtype == "va_list":
-        echo tipe.dtype
         vararg = true
         continue
       result.add(tipe.name & ": " & tipe.dtype)
